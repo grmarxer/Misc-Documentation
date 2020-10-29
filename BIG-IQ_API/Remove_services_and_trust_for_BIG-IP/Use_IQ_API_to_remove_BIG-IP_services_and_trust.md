@@ -140,7 +140,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 
 
 
-![Image](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/illustrations/after_device_removed.png)  
+    ![After BIG-IP Removed Image](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/illustrations/after_device_removed.png)  
 
 
 
