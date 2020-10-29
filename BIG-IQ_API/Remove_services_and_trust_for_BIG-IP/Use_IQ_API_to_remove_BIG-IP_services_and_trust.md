@@ -42,6 +42,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 
     - Now you can use basic authentication to make API calls to the BIG-IQ
 
+<br/>  
 
 2.  Query the BIG-IQ using the following API to get a list of the discovered BIG-IP devices and associated UUID's  
 
@@ -49,10 +50,12 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
     - username = BIG-IQ admin account  
     - password = BIG-IQ Admin account password
     - BIG-IQ mgmt address = BIG-IQ mgmt IP address
+    <br/>  
 
     ```
     curl -ks -u username:password -H "Content-Type: application/json" https://BIG-IQ mgmt address/mgmt/cm/system/machineid-resolver | jq '.items[] | {uuid,hostname,version,product,managementAddress,selfLink}'
     ```
+    <br/>  
 
     ```
     [root@ve1-IQ-7-1-0-1:Active:Standalone] ~ # curl -ks -u admin:adminPassword -H "Content-Type: application/json" https://192.168.2.40/mgmt/cm/system/machineid-resolver | jq '.items[] | {uuid,hostname,version,product,managementAddress,selfLink}'
