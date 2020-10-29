@@ -139,5 +139,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 5. The BIG-IP above should now be removed from the BIG-IQ devices tab  
 <br/>  
 
-    ![After BIG-IP Removed](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/illustrations/after_device_removed.png)  
+![Image](BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/illustrations/BIG-IP_device_to_be_removed.png)  
+
+
 
