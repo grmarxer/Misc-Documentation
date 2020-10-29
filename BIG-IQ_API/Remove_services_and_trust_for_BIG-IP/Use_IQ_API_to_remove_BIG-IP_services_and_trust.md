@@ -76,42 +76,47 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
     "selfLink": "https://localhost/mgmt/cm/system/machineid-resolver/91d584ce-ce92-44ae-9e47-4ca48822186e"
     }
     [root@ve1-IQ-7-1-0-1:Active:Standalone] ~ #
-    ```
+    ```  
+<br/>  
 
-```
-curl -k -u admin:password -X POST \
-  https://192.168.2.40/mgmt/cm/global/tasks/device-remove-mgmt-authority \
-  -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
-  -d '{
-    "deviceReference": {
-        "link": "https://localhost/mgmt/cm/system/machineid-resolver/3a897937-4b83-4456-859d-dc1d47fa769d"
-    },
-    "moduleList": [
-        {
-            "module": "adc_core"
-        },
-        {
-            "module": "fps"
-        },
-        {
-            "module": "access"
-        },
-        {
-            "module": "dns"
-        },
-        {
-            "module": "security_shared"
-        },
-        {
-            "module": "firewall"
-        },
-        {
-            "module": "asm"
-        }
-    ]
-}'
-```  
+3.   In this step we are going to remove all the service associated with BIG-IP `"hostname": "VE4-13-1-0-8.com"` using its UUID `3a897937-4b83-4456-859d-dc1d47fa769d`  
+
+        <br/>  
+        
+        ```
+        curl -k -u admin:adminPassword -X POST \
+        https://192.168.2.40/mgmt/cm/global/tasks/device-remove-mgmt-authority \
+        -H 'Content-Type: application/json' \
+        -H 'cache-control: no-cache' \
+        -d '{
+            "deviceReference": {
+                "link": "https://localhost/mgmt/cm/system/machineid-resolver/3a897937-4b83-4456-859d-dc1d47fa769d"
+            },
+            "moduleList": [
+                {
+                    "module": "adc_core"
+                },
+                {
+                    "module": "fps"
+                },
+                {
+                    "module": "access"
+                },
+                {
+                    "module": "dns"
+                },
+                {
+                    "module": "security_shared"
+                },
+                {
+                    "module": "firewall"
+                },
+                {
+                    "module": "asm"
+                }
+            ]
+        }'
+        ```  
 
 ```
 curl -k -u admin:peachman -X POST \
