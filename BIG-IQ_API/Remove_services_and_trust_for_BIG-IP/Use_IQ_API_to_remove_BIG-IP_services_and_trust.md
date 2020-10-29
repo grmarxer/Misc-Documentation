@@ -1,3 +1,19 @@
+# Removing BIG-IP Services and Device Trust from BIG-IQ using the BIG-IQ API
+
+<br/>  
+
+## Summary  
+
+In this procedure we will provide the user with the steps to remove a BIG-IP from the BIG-IQ Device list using the BIG-IQ API.  This requires removing the BIG-IP services as well as removing the BIG-IP itself.  This procedure provides the steps for removing a single device, however, a sophisticated user could take the information here and create a script to remove several devices.  
+
+__NOTE:__  This procedure uses basic-auth and not a token for authenticating to the BIG-IQ
+
+<br/>  
+
+## Kubernetes Ingress Overview   
+
+
+
 
 https://support.f5.com/csp/article/K43725273
 
