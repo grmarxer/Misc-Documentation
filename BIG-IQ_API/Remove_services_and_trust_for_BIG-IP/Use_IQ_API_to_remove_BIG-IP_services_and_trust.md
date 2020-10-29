@@ -86,7 +86,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 
 3.   In this step we are going to remove all the service associated with BIG-IP `"hostname": "VE4-13-1-0-8.com"` using its UUID `3a897937-4b83-4456-859d-dc1d47fa769d`  
 
-__Note:__ Be sure to substitute the credentials outlined above in the command below  
+        __Note:__ Be sure to substitute the credentials outlined above in the command below  
 
         <br/>  
 
@@ -128,10 +128,10 @@ __Note:__ Be sure to substitute the credentials outlined above in the command be
 
 4. In this step we will remove the BIG-IP from the BIG-IQ device list  
 
-__Note:__ Be sure to substitute the credentials outlined above in the command below  
+    __Note:__ Be sure to substitute the credentials outlined above in the command below  
 
     <br/>  
-    
+
     ```
     curl -k -u admin:adminPassword -X POST \
     https://192.168.2.40/mgmt/cm/global/tasks/device-remove-trust \
