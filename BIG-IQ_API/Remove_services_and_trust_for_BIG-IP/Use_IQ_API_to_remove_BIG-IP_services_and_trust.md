@@ -123,7 +123,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 
 
     ```
-    curl -k -u admin:Ipmatc19 -X POST \
+    curl -k -u admin:adminPassword -X POST \
     https://192.168.2.40/mgmt/cm/global/tasks/device-remove-trust \
     -H 'Content-Type: application/json' \
     -H 'cache-control: no-cache' \
