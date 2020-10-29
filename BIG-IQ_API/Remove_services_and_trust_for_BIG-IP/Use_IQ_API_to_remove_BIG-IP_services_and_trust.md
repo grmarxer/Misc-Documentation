@@ -126,7 +126,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
         ```  
 <br/>  
 
-4. In this step we will remove the BIG-IP from the BIG-IQ device list  
+4. In this step we will remove the BIG-IP from the BIG-IQ device list using its UUID `3a897937-4b83-4456-859d-dc1d47fa769d`  
 
     __Note:__ Be sure to substitute the credentials outlined above in the command below  
 
