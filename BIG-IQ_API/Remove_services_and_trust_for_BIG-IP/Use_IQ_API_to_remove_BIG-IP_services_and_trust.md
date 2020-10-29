@@ -6,49 +6,72 @@
 
 In this procedure we will provide the user with the steps to remove a BIG-IP from the BIG-IQ Device list using the BIG-IQ API.  This requires removing the BIG-IP services as well as removing the BIG-IP itself.  This procedure provides the steps for removing a single device, however, a sophisticated user could take the information here and create a script to remove several devices.  
 
-__NOTE:__  This procedure uses basic-auth and not a token for authenticating to the BIG-IQ
 
 <br/>  
 
-## Kubernetes Ingress Overview   
+## Authenticating to BIG-IQ when using the API  
+
+Beginning in BIG-IQ Centralized Management 5.1.0, the system has HTTP basic authentication disabled, by default.  With this change, the BIG-IQ system has, by default, disabled basic authentication for HTTP/HTTPS requests to the REST framework. This is a security enhancement.  
+
+Reference Links: [K43725273: The BIG-IQ system has HTTP basic authentication disabled by default](https://support.f5.com/csp/article/K43725273) and [K04452074: Overview of using the BIG-IQ system authentication token](https://support.f5.com/csp/article/K04452074)  
+
+
+__NOTE:__  In this procedure we will use basic-auth and not a token for authenticating to the BIG-IQ.  The steps to enable basic authentication are included below.  
 
 
 
+1.  Enable basic authentication on BIG-IQ from the command line.  This will allow you to use a username and password to make your API calls to BIG-IQ  
 
-https://support.f5.com/csp/article/K43725273
+    - ssh to the BIG-IQ  
+
+        ```
+        [root@ve1-IQ-7-1-0-1:Active:Standalone] tmp # set-basic-auth
+        Basic auth is disabled.
+        ```  
+
+        ```
+        [root@ve1-IQ-7-1-0-1:Active:Standalone] tmp # set-basic-auth on
+        Basic auth is enabled.
+        ```  
+        ```
+        [root@ve1-IQ-7-1-0-1:Active:Standalone] tmp # set-basic-auth
+        Basic auth is enabled.
+        ```
+
+    - Now you can use basic authentication to make API calls to the BIG-IQ
 
 
-https://support.f5.com/csp/article/K04452074
+2.  Query the BIG-IQ using the following API to get a list of the discovered BIG-IP devices and associated UUID's  
 
-set-basic-auth
-set-basic-auth on
+    Enter the contents for the following specific to your enviroment for the API call below  
+    - username = BIG-IQ admin account  
+    - password = BIG-IQ Admin account password
+    - BIG-IQ mgmt address = BIG-IQ mgmt IP address
 
+    ```
+    curl -ks -u username:password -H "Content-Type: application/json" https://BIG-IQ mgmt address/mgmt/cm/system/machineid-resolver | jq '.items[] | {uuid,hostname,version,product,managementAddress,selfLink}'
+    ```
 
-
-```
-curl -ks -u admin:password -H "Content-Type: application/json" https://192.168.2.40/mgmt/cm/system/machineid-resolver | jq '.items[] | {uuid,hostname,version,product,managementAddress,selfLink}'
-```
-
-```
-[root@ve1-IQ-7-1-0-1:Active:Standalone] ~ # curl -ks -u admin:password -H "Content-Type: application/json" https://192.168.2.40/mgmt/cm/system/machineid-resolver | jq '.items[] | {uuid,hostname,version,product,managementAddress,selfLink}'
-{
-  "uuid": "3a897937-4b83-4456-859d-dc1d47fa769d",
-  "hostname": "VE4-13-1-0-8.com",
-  "version": "13.1.0.8",
-  "product": "BIG-IP",
-  "managementAddress": "192.168.2.35",
-  "selfLink": "https://localhost/mgmt/cm/system/machineid-resolver/3a897937-4b83-4456-859d-dc1d47fa769d"
-}
-{
-  "uuid": "91d584ce-ce92-44ae-9e47-4ca48822186e",
-  "hostname": "ve1-IQ-7-1-0-1.com",
-  "version": "7.1.0.1",
-  "product": "BIG-IQ",
-  "managementAddress": "192.168.2.40",
-  "selfLink": "https://localhost/mgmt/cm/system/machineid-resolver/91d584ce-ce92-44ae-9e47-4ca48822186e"
-}
-[root@ve1-IQ-7-1-0-1:Active:Standalone] ~ #
-```
+    ```
+    [root@ve1-IQ-7-1-0-1:Active:Standalone] ~ # curl -ks -u admin:adminPassword -H "Content-Type: application/json" https://192.168.2.40/mgmt/cm/system/machineid-resolver | jq '.items[] | {uuid,hostname,version,product,managementAddress,selfLink}'
+    {
+    "uuid": "3a897937-4b83-4456-859d-dc1d47fa769d",
+    "hostname": "VE4-13-1-0-8.com",
+    "version": "13.1.0.8",
+    "product": "BIG-IP",
+    "managementAddress": "192.168.2.35",
+    "selfLink": "https://localhost/mgmt/cm/system/machineid-resolver/3a897937-4b83-4456-859d-dc1d47fa769d"
+    }
+    {
+    "uuid": "91d584ce-ce92-44ae-9e47-4ca48822186e",
+    "hostname": "ve1-IQ-7-1-0-1.com",
+    "version": "7.1.0.1",
+    "product": "BIG-IQ",
+    "managementAddress": "192.168.2.40",
+    "selfLink": "https://localhost/mgmt/cm/system/machineid-resolver/91d584ce-ce92-44ae-9e47-4ca48822186e"
+    }
+    [root@ve1-IQ-7-1-0-1:Active:Standalone] ~ #
+    ```
 
 ```
 curl -k -u admin:password -X POST \
