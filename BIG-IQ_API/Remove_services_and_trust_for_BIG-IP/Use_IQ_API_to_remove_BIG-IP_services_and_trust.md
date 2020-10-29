@@ -77,6 +77,11 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
     }
     [root@ve1-IQ-7-1-0-1:Active:Standalone] ~ #
     ```  
+    <br/>  
+
+    ![BIG-IQ Device List Image](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/illustrations/BIG-IP_device_to_be_removed.png)  
+
+    
 <br/>  
 
 3.   In this step we are going to remove all the service associated with BIG-IP `"hostname": "VE4-13-1-0-8.com"` using its UUID `3a897937-4b83-4456-859d-dc1d47fa769d`  
