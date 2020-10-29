@@ -18,7 +18,9 @@ Reference Links: [K43725273: The BIG-IQ system has HTTP basic authentication dis
 
 __NOTE:__  In this procedure we will use basic-auth and not a token for authenticating to the BIG-IQ.  The steps to enable basic authentication are included below.  
 
+<br/>  
 
+## Procedure  
 
 1.  Enable basic authentication on BIG-IQ from the command line.  This will allow you to use a username and password to make your API calls to BIG-IQ  
 
