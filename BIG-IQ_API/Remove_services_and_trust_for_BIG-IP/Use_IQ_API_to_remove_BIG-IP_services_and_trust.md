@@ -1,4 +1,4 @@
-# Removing BIG-IP Services and Device Trust from BIG-IQ using the BIG-IQ API
+# Removing BIG-IP Services and Device Trust from BIG-IQ using the BIG-IQ 7.1.0.1 API
 
 <br/>  
 
@@ -147,6 +147,8 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 <br/>  
 
 5. The BIG-IP above should now be removed from the BIG-IQ devices tab  
+
+    __Note:__  It will take the BIG-IQ GUI approximately 10 seconds to catch up  
     <br/>  
 
     ![After BIG-IP Removed Image](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/illustrations/after_device_removed.png)  
