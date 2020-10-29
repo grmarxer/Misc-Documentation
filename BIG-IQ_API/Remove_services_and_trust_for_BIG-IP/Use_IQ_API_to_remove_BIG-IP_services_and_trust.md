@@ -82,7 +82,7 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 3.   In this step we are going to remove all the service associated with BIG-IP `"hostname": "VE4-13-1-0-8.com"` using its UUID `3a897937-4b83-4456-859d-dc1d47fa769d`  
 
         <br/>  
-        
+
         ```
         curl -k -u admin:adminPassword -X POST \
         https://192.168.2.40/mgmt/cm/global/tasks/device-remove-mgmt-authority \
@@ -117,16 +117,20 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
             ]
         }'
         ```  
+<br/>  
 
-```
-curl -k -u admin:peachman -X POST \
-  https://192.168.2.40/mgmt/cm/global/tasks/device-remove-trust \
-  -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
-  -d '{
-     "deviceReference": {
-          "link": "https://localhost/mgmt/cm/system/machineid-resolver/3a897937-4b83-4456-859d-dc1d47fa769d"
-      }
-}
-'
-```
+4. In this step we will remove the BIG-IP from the BIG-IQ device list
+<br/>  
+
+    ```
+    curl -k -u admin:adminPassword -X POST \
+    https://192.168.2.40/mgmt/cm/global/tasks/device-remove-trust \
+    -H 'Content-Type: application/json' \
+    -H 'cache-control: no-cache' \
+    -d '{
+        "deviceReference": {
+            "link": "https://localhost/mgmt/cm/system/machineid-resolver/3a897937-4b83-4456-859d-dc1d47fa769d"
+        }
+    }
+    '
+    ```
