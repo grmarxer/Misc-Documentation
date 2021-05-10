@@ -42,7 +42,7 @@ __Note:__ All configurations below use BIG-IP v13.1.3.5
 
 ### IPv6 Tunneled inside IPv4 Lab Diagram  
 
-![Lab Diagram](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/diagram/ipsec_lab_IPv6_inside_ipv4.png)  
+![Lab Diagram](https://github.com/grmarxer/Misc-Documentation/blob/master/IPSEC/diagram/ipsec_lab_IPv6_inside_ipv4.png)  
 
 
 ###  This Configuration Supports IPv6 Tunneled inside IPv4 IPSEC  
