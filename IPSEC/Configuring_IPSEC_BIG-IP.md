@@ -52,7 +52,7 @@ __Note:__ All configurations below use BIG-IP v13.1.3.5
 
     [BIG-IP SCF](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve2-ltm-13-1-3-5_IPv6_inside_IPv4_IPSEC_tunnel.txt)  
 
-    [BIG-IP Parsed SCF -- ready for cut and paste](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve2-ltm-13-1-3-.txt)  
+    [BIG-IP Parsed SCF -- ready for cut and paste](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve2-ltm-13-1-3-5_IPv6_inside_IPv4_IPSEC_tunnel_parsed.txt)  
 
     [BIG-IP UCS](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve2-ltm-13-1-3-5.com-ipv6-in-ipv4-tunnel.ucs)  
 
@@ -60,7 +60,7 @@ __Note:__ All configurations below use BIG-IP v13.1.3.5
 
     [BIG-IP SCF](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve4-ltm-13-1-3-5_IPv6_inside_IPv4_IPSEC_tunnel.txt)  
 
-    [BIG-IP Parsed SCF -- ready for cut and paste](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve4-ltm-13-1-3-5_.txt)  
+    [BIG-IP Parsed SCF -- ready for cut and paste](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve4-ltm-13-1-3-5_IPv6_inside_IPv4_IPSEC_tunnel_parsed.txt)  
 
     [BIG-IP UCS](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/configurations/ve4-ltm-13-1-3-5.com-ipv6-in-ipv4-ipsec-tunnel.ucs)  
 
