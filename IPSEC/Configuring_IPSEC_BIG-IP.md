@@ -14,7 +14,7 @@ __Note:__ All configurations below use BIG-IP v13.1.3.5
 
 ### IPv4 Only Lab Diagram  
 
-![Lab Diagram](https://github.com/grmarxer/Misc-Documentation/tree/master/IPSEC/diagram/ipsec_lab_ipv4_only.png)  
+![Lab Diagram](https://github.com/grmarxer/Misc-Documentation/blob/master/IPSEC/diagram/ipsec_lab_ipv4_only.png)  
 
 
 ###  This Configuration Supports IPv4 IPSEC only  
