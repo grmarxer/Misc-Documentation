@@ -1,0 +1,976 @@
+#TMSH-VERSION: 13.1.3.5
+
+cli admin-partitions {
+    update-partition Common
+}
+apm epsec epsec-package /Common/epsec-1.0.0-696.0.iso {
+    cache-path /config/filestore/files_d/Common_d/epsec_package_d/:Common:epsec-1.0.0-696.0.iso_274947_1
+    oesis-version 4.3.46.0.0
+    revision 1
+    version 1.0.0-696.0
+}
+apm oauth db-instance /Common/oauthdb {
+    description "Default OAuth DB."
+}
+apm report default-report {
+    report-name sessionReports/sessionSummary
+    user /Common/admin
+}
+auth user admin {
+    description "Admin User"
+    encrypted-password $6$aYQUQv2u$DuBEHDTguofv.Q0Yqo42b0FoR77IJ39fMU.zuqkr800hqPcd0iXZtR7IUy4vaeSWu2oL5EGGbQfkmzgxtrvma.
+    partition-access {
+        all-partitions {
+            role admin
+        }
+    }
+    shell none
+}
+auth user f5hubblelcdadmin {
+    description f5hubblelcdadmin
+    encrypted-password zBfckXymO793u4U2McvqKPyZFKQBGlZ5
+    partition-access {
+        all-partitions {
+            role admin
+        }
+    }
+    shell none
+}
+auth user root {
+    description root
+    encrypted-password $6$Dw./yhrx$x.GJ2UFYMxg65ox/j9kzMGEV/elZJR4cxHurQOXJEgS9qHvI7A9JFB7HddMpylO4.wYcLaZXdZ80TJg5JPkqy1
+    shell bash
+}
+cm cert /Common/dtca-bundle.crt {
+    cache-path /config/filestore/files_d/Common_d/trust_certificate_d/:Common:dtca-bundle.crt_183705_2
+    certificate-text "-----BEGIN CERTIFICATE-----
+MIIDmDCCAoCgAwIBAgIDAMZ2MA0GCSqGSIb3DQEBBQUAMC4xLDAqBgNVBAMTIzU5
+MzMxZjM3LThhMzYtNDA3NS04Y2YxMDAwYzI5NzQwYzM5MB4XDTIxMDIwMTIxNDM1
+MloXDTMxMDEzMDIxNDM1MlowLjEsMCoGA1UEAxMjNTkzMzFmMzctOGEzNi00MDc1
+LThjZjEwMDBjMjk3NDBjMzkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB
+AQC+hL6bNodUwGh1ybJD2eF7Dp9WZkkQtYPV6DqTD8awWdSX77qU6ALWkdQ7WJ47
+ipoXjR5Fs42adlRSiC2CSfs+MGd+fPesAA/4iLnKlYBCJrxCFkrYYUrONKrK09Ew
+QVK6CvuB3m/f9NZ2YmdyKzhB/YLxAx2q/j72MOs5vDBPI78/XwCFycU73GlRGRVw
+D7VGYdOvEwEbQyjaRguukOKmsZ77FlMiP0RHCY5TF8RPJynhfTQZ/CQKeljSKyl4
++c3vw6hKd6WWf51epKMyhoZ0mx10a+sqUyTfqGTtQRha4gt70vZi1pA+s0LMrnow
+1xSYW5wb+caSWjF2HbVIAnPrAgMBAAGjgb4wgbswHwYDVR0RBBgwFoIUdmU0LWx0
+bS0xMy0xLTMtNS5jb20wDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAbYw
+HQYDVR0OBBYEFHtY3q6iRpFt+bRgwZFZ6KSUszjyMFgGA1UdIwRRME+AFHtY3q6i
+RpFt+bRgwZFZ6KSUszjyoTKkMDAuMSwwKgYDVQQDEyM1OTMzMWYzNy04YTM2LTQw
+NzUtOGNmMTAwMGMyOTc0MGMzOYIDAMZ2MA0GCSqGSIb3DQEBBQUAA4IBAQANnQlN
+eA9DpcHGZkuNZAXflsTz4RJlHNirP/Asf+wi9vxfeJvacHTKYNEpw/V7ZORFXHKD
+qyJWdl04wNPfEiPzG+tz8wl1B/7VokMwrd+nbOwv+6pGpUB3JUMfZcGb02rY7qmH
+vmAqgFgibqvY6hlJSNGnhsIoClc9xiE5vKsi6Uuui0vKzzmecO3Mn1jlTdBqLzYe
+rRu1Y/Cg/xyTWTMVuepCHNHEtk9tEcOvuhbmwWaVi/lKpQXM34ivPlcWcCjPpdmg
+fFnQVc/+AoT01F9AWXY5UxX5CaHhKixoy8IwRPZBGA8lCu1GW2ESD0O7TEbUJU3/
+/IUoTXzpJyrrYItA
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIC2jCCAcKgAwIBAgIERetbjTANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDDCRh
+YjRhMTUyNS0xMzAxLTQ4ZDgtOTMzNy1jOTcwNTNmNmE2NmIwHhcNMTgwOTI0MjA0
+MzA4WhcNMjgwOTIyMjA0MzA4WjAvMS0wKwYDVQQDDCRhYjRhMTUyNS0xMzAxLTQ4
+ZDgtOTMzNy1jOTcwNTNmNmE2NmIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQC6jvkkfyRUbg7EnbnB/vHNxRxrRi1WoJmdbq576erGhu0jolFT200/QQJy
+vA8ddkwyvZkC92omjnD2HrXF+ouf5XQu5IyeOIbryJGjKficDJxApmjFTmUZrX2h
+BGnVbJk0xmyURBLV6Vfs3cLZagqiVWbsSqNTMPlX0IA+H3eDK0Wr5IGZZ8nJv4xL
+E6CR4xG6kRjo2rjYzHkZnR5+Ly6/vBAPpTlyZceS246XaP82/Zxly6WUulkCD5Y5
+kfibaUHwdJnOGiCd82A5GeBPaFBf/ymZCGY9YMct/i4K3MxaJy3dCyjTeVi8bxCn
+iJI/1g8+/509H4VJ53oiErKAhRdjAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAEw5
+etU72Cd1jPCxuZ4MADPHleHoCUaZl9j31g/53AEJzJ5DA1HQ3D8E3SiGhT0TyzX3
+2Hn4PoLeBiitiFziNsYykU/E/+B3p60rYwzTwgScdfJ9ObV8oPGRT4nALNMZeN4h
+AB9jJ+PMz7rDfIx7FscpzRfhxLZ2FK37UwD+hb3Cy+zc+kn6rs7+4pp1/yr9HcYF
+U5WuqmGE/HBqIh6pYmnGKrB2lb8aODVyXmPgy1YaiaoQ30jXBbNCk5/x9HbAXXVw
+Dt//ryvoY+fb4mGJEYxbHy8Ihajh2iW6mQnjdN8tLTWxZfFsCADhJasEF1CqECU5
+CF1rbVRZNzCZsIWC7zE=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIC2jCCAcKgAwIBAgIEOMJoSjANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDDCRj
+NzFjZmI5OS03NWYzLTQ5ZTgtOGM2MS1jODUwMGMxYTg1NjIwHhcNMTgwOTI0MjA0
+MzA1WhcNMjgwOTIyMjA0MzA1WjAvMS0wKwYDVQQDDCRjNzFjZmI5OS03NWYzLTQ5
+ZTgtOGM2MS1jODUwMGMxYTg1NjIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQDQgoxRqEnv/YPqzQF9dpt/LjlHOajFTyEoT0WtVy58fP50PRhTIa8ae6eF
+0F5sp12OX378miVV62z0N3qtGrt2FqA0qJnWkappCVHdlE/OkQy7c2+FogrORCOl
+vbRFZabtUg/OrUsohDTf/ld9SA6GsY46zYSPCUiMYC2USQIKzMb9p4rdRW1L4ulb
+7x8UvxmVilSox71txtNZo3EeijYhIqeFZEFj5Beo1XZQgaxN8ZrYJ/WXwuEuzoHi
+4VwhSFINAC+Kfx42XZWPaLijmouYFtDhK/N9Tcj3VY7HQjYg3RGobdYBWp9/9YTh
+UDVQj8XyNj93fFRQIvJoZtujMFOjAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAIGE
+OSAe9IxIRjfrg2M4cbvbS2qE9xzaE2TjHh2uLGaAQYv7emwZcMo6PB5rYkqkqE0W
+UeUAuHLjgg4Gu0n+sNA2xrcTdC3UUfN8kdE7o1Bw83d0HVVK4TBiyw5cWAwEQw45
+Hvub5mTDqEfDfQ679SKkI9nMK8cax51BbLLGmR2BIrf2JxkEYTxPFc9gFFtxM1lw
+l9AMvsNwn89uSw0Cdbapkkc6/snDhW1sVqiHOe5SgrQi6nJB0goFN1vha557Xlt+
+L6ToT7imQoqOZg/WpOSsBhDKbzwfIEH0ANtn7WvdNAJXkABrkJ4S2hLscLkGlat6
+yjG8opsTHr47QhZ9AXU=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIC2jCCAcKgAwIBAgIEKcOuMTANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDEyQ3
+YmUwODFmOS03OTYzLTRhMTQtYjEzZi1kYTRlYzRlMjQwMTIwHhcNMjAxMDIxMTkw
+MDAwWhcNMzAxMDIwMTkwMDAwWjAvMS0wKwYDVQQDEyQ3YmUwODFmOS03OTYzLTRh
+MTQtYjEzZi1kYTRlYzRlMjQwMTIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQC6JnZAishVIaHDHZ4ERoD3lSzQcGiwYHLuELw7c1wUpLe4aC1hGDwKMLIS
+u9SyzeWXkbf17dAIw9u7w7rhu2sQXzDs1EoonyQolPFW/dWHF4Y8bUMQYrbGKinx
+vPzTsSkVDQiXGpv1D3mAxTmY5OyHNZacaYFIXy10qbtrghOd1gInnEhMc3fVHFAI
+ShJSzNFhd3kUHNQRCE68fLPvFvpv4CCRVOMJF6aHBT3YlCJ3imZg+K96hNgKX/Vy
+McGylzlAxIkXA31LLSSz4BlXP3/LZErwoRgofp4LjEK/fp6f+zMfLJRWYpPI0l80
+0IK0X5Vgq4okTY4/duvXXUu9CKfzAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAGLa
+ZJ/AVhl07vbuVmm6MWkAFPT3OTsGWS55DL4ZtIcoguFXhQS6wh+Rc/6MRycDN25i
+4BfUV+hO8JEubosLArO7bOJQ15xuIJQ3USJmkX2HGH9ORjkWRLMz1C99SgUohsZZ
+/oUL9I4cG6hjKHzc8yVWCdLTbwkuBpbFYDm2x/QRS3RNa++7OWGjIqqMc8gLB+lJ
+5YtEWozC2QnJhYtr1pb6CIKCkyrDGF7nCM/G9+e8mczzhwqd1hMwVA17gFoOz/8w
+RThvR1jMpCCCgQZ82vrTRsnQHlTBpwBKqC6Q5s/EzLaYnyIv7L6pZ6YRfzh1yjRJ
+uFUH7RVq44Msy6PQywo=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIC2jCCAcKgAwIBAgIEXNl9OTANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDEyQ2
+Y2VmNmUwOS1jNDMyLTQzZjAtYjMwZi04ZWZmNDE0NDUzOWYwHhcNMjAxMDIxMTkw
+MDA1WhcNMzAxMDIwMTkwMDA1WjAvMS0wKwYDVQQDEyQ2Y2VmNmUwOS1jNDMyLTQz
+ZjAtYjMwZi04ZWZmNDE0NDUzOWYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQCkQeK8Xvjh06pyXripwzYpTlLg8uC/yUoRij+uLNATbZZ7hmoX1togk+Ar
+CeHqO5yxmYjAu2A9eLIkgSo8ZaZ/NAJnQmA0Xplg21uRM2uLjllCs+TAA9qAcYG9
+kfkOAg9LFPx/z+5c6RbwGtt4C5Bjm6MS+p0K8TKZD8omrKwbMv7det9OEms9xR8G
+ZOsx5AErI+HoHfDGQgnTMZeTxbyz1yfyKaBgQShcaxK1uGrVaj6JCM7SkwhcTOW4
+WQNcXLOgOzgQRan9ZejEq7yDkeAPBWForOxOdUHsn0WJ8fm7jDcp3LVpwGZ3J9Eu
+LeYVePnOqpq/hEm4jYmfyIM3lvZRAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAF5B
+Ot8ymQUGkL+ku66uHky1ICgBYuMB9efmmFbL8d9yYLrzGvqcCdiJ24ZDWnqPrtB6
+f/B6YKMtMgwGAvbKHXClHnuTXr4jZAoAY7skXDZpMTQas2Io/D+gV/JtLuiBgzam
+Ob0i0sIf4f5/top3TEmriX37T5smHgxXh1R9r9rYjnJdBcR/cOfGKxi6cR7v4i7i
+FpShe6iu9CKCz+p4S5TLxiCshstUKP/SDo+bsXNscJc56tdw4Q3yT4o5sGmKHuLL
+1JQId5kErutsoJBk7/TuGYUaGcIJgLNmkDnkjJw4X4oMmQSVijR+A9Nm7T9ZSw/H
+7DpwTTxvI6FAklxDKnw=
+-----END CERTIFICATE-----
+"
+    checksum SHA1:5506:194a9d73321a0777945c9acb71ee874b3531c984
+    revision 2
+}
+cm cert /Common/dtca.crt {
+    cache-path /config/filestore/files_d/Common_d/trust_certificate_d/:Common:dtca.crt_183701_2
+    certificate-text "-----BEGIN CERTIFICATE-----
+MIIDmDCCAoCgAwIBAgIDAMZ2MA0GCSqGSIb3DQEBBQUAMC4xLDAqBgNVBAMTIzU5
+MzMxZjM3LThhMzYtNDA3NS04Y2YxMDAwYzI5NzQwYzM5MB4XDTIxMDIwMTIxNDM1
+MloXDTMxMDEzMDIxNDM1MlowLjEsMCoGA1UEAxMjNTkzMzFmMzctOGEzNi00MDc1
+LThjZjEwMDBjMjk3NDBjMzkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB
+AQC+hL6bNodUwGh1ybJD2eF7Dp9WZkkQtYPV6DqTD8awWdSX77qU6ALWkdQ7WJ47
+ipoXjR5Fs42adlRSiC2CSfs+MGd+fPesAA/4iLnKlYBCJrxCFkrYYUrONKrK09Ew
+QVK6CvuB3m/f9NZ2YmdyKzhB/YLxAx2q/j72MOs5vDBPI78/XwCFycU73GlRGRVw
+D7VGYdOvEwEbQyjaRguukOKmsZ77FlMiP0RHCY5TF8RPJynhfTQZ/CQKeljSKyl4
++c3vw6hKd6WWf51epKMyhoZ0mx10a+sqUyTfqGTtQRha4gt70vZi1pA+s0LMrnow
+1xSYW5wb+caSWjF2HbVIAnPrAgMBAAGjgb4wgbswHwYDVR0RBBgwFoIUdmU0LWx0
+bS0xMy0xLTMtNS5jb20wDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAbYw
+HQYDVR0OBBYEFHtY3q6iRpFt+bRgwZFZ6KSUszjyMFgGA1UdIwRRME+AFHtY3q6i
+RpFt+bRgwZFZ6KSUszjyoTKkMDAuMSwwKgYDVQQDEyM1OTMzMWYzNy04YTM2LTQw
+NzUtOGNmMTAwMGMyOTc0MGMzOYIDAMZ2MA0GCSqGSIb3DQEBBQUAA4IBAQANnQlN
+eA9DpcHGZkuNZAXflsTz4RJlHNirP/Asf+wi9vxfeJvacHTKYNEpw/V7ZORFXHKD
+qyJWdl04wNPfEiPzG+tz8wl1B/7VokMwrd+nbOwv+6pGpUB3JUMfZcGb02rY7qmH
+vmAqgFgibqvY6hlJSNGnhsIoClc9xiE5vKsi6Uuui0vKzzmecO3Mn1jlTdBqLzYe
+rRu1Y/Cg/xyTWTMVuepCHNHEtk9tEcOvuhbmwWaVi/lKpQXM34ivPlcWcCjPpdmg
+fFnQVc/+AoT01F9AWXY5UxX5CaHhKixoy8IwRPZBGA8lCu1GW2ESD0O7TEbUJU3/
+/IUoTXzpJyrrYItA
+-----END CERTIFICATE-----
+"
+    checksum SHA1:1306:b5607e8fc268965dc0388f6926b30683ff05a539
+    revision 2
+}
+cm cert /Common/dtdi.crt {
+    cache-path /config/filestore/files_d/Common_d/trust_certificate_d/:Common:dtdi.crt_183697_2
+    certificate-text "-----BEGIN CERTIFICATE-----
+MIIDhjCCAm6gAwIBAgIDBsHNMA0GCSqGSIb3DQEBBQUAMC4xLDAqBgNVBAMTIzU5
+MzMxZjM3LThhMzYtNDA3NS04Y2YxMDAwYzI5NzQwYzM5MB4XDTIxMDIwMTIxNDM1
+NVoXDTMxMDEzMDIxNDM1NVowHzEdMBsGA1UEAxMUdmU0LWx0bS0xMy0xLTMtNS5j
+b20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCXeDyqfV9qpla5RFhd
+OeorHOxePxlyPqIixJxmS81ABOblPZmLecdvwqadx3YLmEbPnqhsKGdtjPDfH5rq
+TLXHlk82xDE4SQaaqhrcDQi0wfDI1y2Zkv9blsp0VGRsFRjXnKYpV+Drtg6fQxBw
+2cbBXydjg4lwVHd94OocVeopw3tM49lpCKT4hYDcyrZlS4GGg+8ovROm8p6sNHkt
+T1IqwFNz/2TqdCH3WSKA+XQhAPxEVheirVya2k/YAwyttjZk9e4m0x/HAxGWJNBQ
+ozCTvjf3AY0zIq7KA/4vfJ6xdhZXKmRKDPBD6dT57TJcg3y42kgcLOCYRNwGIGuD
+ljfxAgMBAAGjgbswgbgwHwYDVR0RBBgwFoIUdmU0LWx0bS0xMy0xLTMtNS5jb20w
+DAYDVR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0OBBYEFO/hyQgkQDKv
+whAEHRV9DmJuJaH7MFgGA1UdIwRRME+AFHtY3q6iRpFt+bRgwZFZ6KSUszjyoTKk
+MDAuMSwwKgYDVQQDEyM1OTMzMWYzNy04YTM2LTQwNzUtOGNmMTAwMGMyOTc0MGMz
+OYIDAMZ2MA0GCSqGSIb3DQEBBQUAA4IBAQChqq2H1JFWmksHAHIwwMOO6X55yVTW
+XSjoP1KafWEPjopS4EazFLWTd5Mcd7nGLpu+3ono0r4/kLi//XCvvjTlmFjGEzSL
+8kXxjabp8otJmfug2fYdkq0/bTSrPVeTLejPCdYSiLieVFsUds807Dvo+HXFoLis
+z8MA9IrkbK78bgsaYf9RlVYRJVK19Xo3DlgQoWDqTeRCQB8RhHUs5RrbCFQMfYCE
+X5gUYIar4lA54ovEGolanqvgnQRX+jzi2OBK9JJ++OmHDWSCpiCCYUD9UCChepqp
+UrwqdDOBMgEAa5oaz0UxqGdRgLwFs7vvpOqbbLJsRMd+lU5zEzLLwv2q
+-----END CERTIFICATE-----
+"
+    checksum SHA1:1281:b6630c58a9ec84bd89173f631f423bfe4cdf2b92
+    revision 2
+}
+cm device /Common/ve4-ltm-13-1-3-5.com {
+    active-modules { "APM, Base, VE GBB (500 CCU, 2500 Access Sessions)|WCDKKAY-FZOXZTC|Anti-Virus Checks|Base Endpoint Security Checks|Firewall Checks|Network Access|Secure Virtual Keyboard|APM, Web Application|Machine Certificate Checks|Protected Workspace|Remote Desktop|App Tunnel" "Best Bundle, VE-10G|UCNYCCE-CMPKDSH|Rate Shaping|ASM, VE|DNS-GTM, Base, 10Gbps|SSL, VE|Max Compression, VE|AFM, VE|Exclusive Version, v12.1.X - 18.X|DNSSEC|GTM Licensed Objects, Unlimited|DNS Licensed Objects, Unlimited|DNS Rate Fallback, 250K|GTM Rate Fallback, 250K|GTM Rate, 250K|DNS Rate Limit, 250K QPS|Routing Bundle, VE|VE, Carrier Grade NAT (AFM ONLY)|PSM, VE" }
+    base-mac 00:0c:29:74:0c:39
+    build 0.0.5
+    cert /Common/dtdi.crt
+    chassis-id 564d3827-c122-85c2-ad1f40740c39
+    edition "Point Release 5"
+    hostname ve4-ltm-13-1-3-5.com
+    key /Common/dtdi.key
+    management-ip 192.168.2.35
+    marketing-name "BIG-IP Virtual Edition"
+    optional-modules { "Advanced Protocols, VE" "App Mode (TMSH Only, No Root/Bash)" "ASM to AWF Upgrade, VE-3G" "BIG-IP VE, Multicast Routing" "BIG-IP VE, Privileged User Access, 100 Endpoints" "BIG-IP VE, Privileged User Access, 1000 Endpoints" "BIG-IP VE, Privileged User Access, 250 Endpoints" "BIG-IP VE, Privileged User Access, 50 Endpoints" "BIG-IP VE, Privileged User Access, 500 Endpoints" "CGN, ADD-VE, 10G" "Concurrent Users and Access Sessions, VE" "DataSafe, VE-10G" "DNS and GTM (250 QPS), VE" "External Interface and Network HSM, VE" "FIPS 140-2 Level 1, BIG-IP VE-1G to 10G" "Intrusion Prevention System, VE-10G" "IP Intelligence, 1Yr, VE-10G" "IP Intelligence, 3Yr, VE-10G" "IPS, 1Yr, VE-10G" "IPS, 3Yr, VE-10G" ONAP "Secure Web Gateway, VE-3G-10G, 10000 Sessions, 1Yr" "Secure Web Gateway, VE-3G-10G, 10000 Sessions, 3Yr" "Secure Web Gateway, VE-3G-10G, 5000 Sessions, 1Yr" "Secure Web Gateway, VE-3G-10G, 5000 Sessions, 3Yr" "SSL Orchestrator, VE (3G/5G/10G)" "URL Filtering, VE-3G-10G, 10000 Sessions, 1Yr" "URL Filtering, VE-3G-10G, 10000 Sessions, 3Yr" "URL Filtering, VE-3G-10G, 5000 Sessions, 1Yr" "URL Filtering, VE-3G-10G, 5000 Sessions, 3Yr" "VE SSL Compression Offload, Medium" "VPN Users" }
+    platform-id Z100
+    product BIG-IP
+    self-device true
+    time-zone America/Los_Angeles
+    version 13.1.3.5
+}
+cm device-group /Common/device_trust_group {
+    auto-sync enabled
+    devices {
+        /Common/ve4-ltm-13-1-3-5.com { }
+    }
+    hidden true
+    network-failover disabled
+}
+cm device-group /Common/gtm {
+    devices {
+        /Common/ve4-ltm-13-1-3-5.com { }
+    }
+    hidden true
+    network-failover disabled
+}
+cm key /Common/dtca.key {
+    cache-path /config/filestore/files_d/Common_d/trust_certificate_key_d/:Common:dtca.key_183703_2
+    certificate-text "-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC+hL6bNodUwGh1
+ybJD2eF7Dp9WZkkQtYPV6DqTD8awWdSX77qU6ALWkdQ7WJ47ipoXjR5Fs42adlRS
+iC2CSfs+MGd+fPesAA/4iLnKlYBCJrxCFkrYYUrONKrK09EwQVK6CvuB3m/f9NZ2
+YmdyKzhB/YLxAx2q/j72MOs5vDBPI78/XwCFycU73GlRGRVwD7VGYdOvEwEbQyja
+RguukOKmsZ77FlMiP0RHCY5TF8RPJynhfTQZ/CQKeljSKyl4+c3vw6hKd6WWf51e
+pKMyhoZ0mx10a+sqUyTfqGTtQRha4gt70vZi1pA+s0LMrnow1xSYW5wb+caSWjF2
+HbVIAnPrAgMBAAECggEANEzuol9SwWJcitFG3beHXafC+A32St75hRROWCbBjZHr
+eZY26z/R36OC1pPaRFAlQwfbYpkK63dGaK23iIfUr9rL3n5h41bVC45FKqbl4cMO
+dTn3a/UxevAcXrfNOmkEU8xGBP3SSnHFGhSjf0T8GamFc7I+R72p/R2qxVuzC1Y0
+CMmHEwScajeLRiyTQM8IOTKwHbNARO+juR/cree6nrZqZTGPcWv4foAk93gBnxft
+fJ+Mev9qToDaTxaZb81iya03Wk3Rs1EhgYWLV2HGBunoVYmXgVmdI8+Ds7jp7eQh
+6hSMSxlkUEJQlkEUGx6s66FmmfVbxCyT9/zv0JzYYQKBgQDznFALs+g6cKgbcVOg
+5ZFJZ7YapfZvYeDgS4mv/lTsbc3lyhJqjEInjLbwHqhco7O3vYFd3acYClEpwgdf
+ovjULV+UkeKxbEpcw/OjEgCspPLvIUDBxH498+FkDcaXe21DakyFQJq3fby3W1QD
+nOLX7JHqlPfZD2BxZ48mjutekQKBgQDINTMvqiSZT2U7XaHGtb84p7fmDTueOqT+
+0xIp8irLM1445B7dM+LCvBtGAK73U+PZcA2i43FqdMSdEiW+nhXFQI/5YAe95Gpf
+fKNp1nxpNGMqRwSOkbaWKdnDvYhlbWDy1ry4tln23jWrEQaIj54Bs0g7Tg/ylXup
+eygQ/75guwKBgHInT0MMnMe1vrCNXDjLGlehZ635Ew+CeBPikbSMo1Le6VrCY/rV
+mrJZt+exFgfDFhYFkTdhBEm5m+rLZxUjkyIp2N4PtoCZVAdAM0y4xOQhr0zq8iNa
+ZiW1wGpYIjUdu0eZ6h2O9nEBVIs/GpFO1OWFj6KzB6kJEZJSirvwwM5hAoGAYUko
+tFKzMiRYhr567DpIz1kAjbOEcuEAaCtcujFJBjDR6kc/kDG0UPhjMGMIonqLT4+Z
+sLtg02AmYkT9PmFHJvC2hXFakbW60ueX6Mgm8GBah6K23iiEVvfDL9CbxN2frKEY
+V5GUqddUsOm3CQjwuNbLlLXcHf7xdmu4DnqXoh0CgYBI7ARu0EvAf+ON/s5LlWC5
+yy7Pqo7RWhavw8Mr7kwrY5RpsqulxNjyIejM7ooAr5ynVj2pFuf760vjXcL2FIKu
+ukJi3to+zY/XiJ28BXmWYGANtNNrfgFIXCWIUZW6hHUTr6niZaFAHae4oWYhw+xB
+DWRqw+AxqKtgEfGpj1XaqQ==
+-----END PRIVATE KEY-----
+"
+    checksum SHA1:1704:fe9f1f7b9e56c93eb61f447894005e28904d7704
+    revision 2
+}
+cm key /Common/dtdi.key {
+    cache-path /config/filestore/files_d/Common_d/trust_certificate_key_d/:Common:dtdi.key_183699_2
+    certificate-text "-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCXeDyqfV9qpla5
+RFhdOeorHOxePxlyPqIixJxmS81ABOblPZmLecdvwqadx3YLmEbPnqhsKGdtjPDf
+H5rqTLXHlk82xDE4SQaaqhrcDQi0wfDI1y2Zkv9blsp0VGRsFRjXnKYpV+Drtg6f
+QxBw2cbBXydjg4lwVHd94OocVeopw3tM49lpCKT4hYDcyrZlS4GGg+8ovROm8p6s
+NHktT1IqwFNz/2TqdCH3WSKA+XQhAPxEVheirVya2k/YAwyttjZk9e4m0x/HAxGW
+JNBQozCTvjf3AY0zIq7KA/4vfJ6xdhZXKmRKDPBD6dT57TJcg3y42kgcLOCYRNwG
+IGuDljfxAgMBAAECggEAEBiIl9RtUou9DQB4hGWeXvj6nDRH27ZQq/GpLgyxkbND
+pwoh+iqVeSid5IfY4TgMFE2Hl8C+ZuuSgB9farT+nyg3oDn+gfzunPplEsu2yGCQ
+mgMVtytiA+VU+8IpDrw6MNVWae/K+LlWufFaOqfFwXA/YwmMDhoHvaJsNlkh4lCX
+7QIfJHzYHJ4mB8zvSmP4T22Fm/7JtIEJ+xsFLFMNKXRcA+dHwp8LCG1q9NOWrceg
+fQ7oUbzSINW9mkcHngvZAAdZrdQYMlxh3RSNm2PgaeDQRpLwZ4heGPZpff6qwH+F
+ajWs5HbIOIEjRY6sgvf2IoyxgnxobN80YFhddZt/XQKBgQDPz0Use8JRUq4uOFDb
+s1Ds46sacSYhyWsBlhpUSSKroK16JWvw40+uF+ocV4lGGX4+YkUIufbDch5w0ibI
+jtl1uDXpNZUsCF1M8ENCmAwtvV/hDjporu+cvsUp05PeJI2BseWMQxNq9rOUhSKz
+Y6ngYqyccJl4+9hpSlN3ytN3LQKBgQC6mFB+Dg4gpVgvkSH8wk8HBBl60BMzp00O
+jCBmu5DPgdkVO6vBFCc2jObovtzP5zTgPv9kCbVq8Bx3pXIJNhFcy6bSjFP6qDZc
+e6qOFN/WlERmdmmJRjkFS3RCuP70bg67DOh23h6hqPMZ3HHUkdoTWBGQ5yf/aoSu
+hUJurEX+VQKBgEKDJLDIK7m7rOQ+QiMPkadAd1NPQ9UskoM/d83iWqZ0FxIxSAsh
+ti8SmGvZ2KYHItD0wwO4AbMso3GY0bD/h7qV6ytpawVc5//oJp7562v4YOe3lhpL
+Y4XXyWNJxNok+OW5+q6aCW0C6RdwRVsFWynmazjnETgX43xPvcdps6VBAoGAOK8u
+vKx+ZDJ2kLSxM3y/zyzSpLlzK9zmDsZIzYyrWC5lCQtAiP4bT3oMZ6YbpFjjekAJ
+C5Xbc+oPa9VpyByRt7PyMMIKfPn+0aeLz2/N8/zErq/ILbiUd+RNJDvYz95jQTWR
+pRKjEY8mkrOiLOZF7lxxsahXQUNVnULERKS2+qUCgYBiU7h0MPO9SvtmCWUfjPn2
+zDtk9EvMUwUNJv3q7VmRoABk8Q9CzZRpiAOnht2WrhMtqkAdRFtfia6C8cIvlI2f
+vSltPr55TJrkvMjKuYZ/dwX5qZRJhcqhn7H73mdnnl7YrINyIWtdYj05L34zuADM
+6kpChWkjeguMYnZxq90BpQ==
+-----END PRIVATE KEY-----
+"
+    checksum SHA1:1704:8d7337af165cf3b2ca21cbdfa3f1f009457b2a71
+    revision 2
+}
+cm traffic-group /Common/traffic-group-1 {
+    unit-id 1
+}
+cm traffic-group /Common/traffic-group-local-only { }
+cm trust-domain /Common/Root {
+    ca-cert /Common/dtca.crt
+    ca-cert-bundle /Common/dtca-bundle.crt
+    ca-devices { /Common/ve4-ltm-13-1-3-5.com }
+    ca-key /Common/dtca.key
+    guid aa1e0748-75bb-476d-91af000c29740c39
+    status standalone
+    trust-group /Common/device_trust_group
+}
+gtm global-settings general {
+    synchronization-group-name test-name
+}
+gtm global-settings metrics {
+    metrics-collection-protocols { icmp }
+}
+gtm global-settings metrics-exclusions {
+    addresses none
+}
+gtm pool a /Common/pool-common { }
+ilx global-settings {
+    debug-port-blacklist { 47019 54321 60000 }
+}
+ltm default-node-monitor {
+    rule none
+}
+ltm virtual /Common/L3-172-16-10-0 {
+    destination /Common/172.16.10.0:0
+    ip-forward
+    mask 255.255.255.0
+    profiles {
+        /Common/fastL4 { }
+    }
+    source 172.16.110.0/24
+    translate-address disabled
+    translate-port disabled
+}
+ltm virtual /Common/L3-172-16-110-0 {
+    destination /Common/172.16.110.0:0
+    ip-forward
+    mask 255.255.255.0
+    profiles {
+        /Common/fastL4 { }
+    }
+    source 172.16.10.0/24
+    translate-address disabled
+    translate-port disabled
+}
+ltm virtual /Common/L3-172-16-120 {
+    destination /Common/172.16.20.0:0
+    ip-forward
+    mask 255.255.255.0
+    profiles {
+        /Common/fastL4 { }
+    }
+    source 172.16.120.0/24
+    translate-address disabled
+    translate-port disabled
+}
+ltm virtual /Common/L3-172-16-120-0 {
+    destination /Common/172.16.120.0:0
+    ip-forward
+    mask 255.255.255.0
+    profiles {
+        /Common/fastL4 { }
+    }
+    source 172.16.20.0/24
+    translate-address disabled
+    translate-port disabled
+}
+ltm virtual-address /Common/0.0.0.0 {
+    address any
+    arp disabled
+    icmp-echo disabled
+    mask any
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/172.16.10.0 {
+    address 172.16.10.0
+    arp disabled
+    icmp-echo disabled
+    mask 255.255.255.0
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/172.16.20.0 {
+    address 172.16.20.0
+    arp disabled
+    icmp-echo disabled
+    mask 255.255.255.0
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/172.16.110.0 {
+    address 172.16.110.0
+    arp disabled
+    icmp-echo disabled
+    mask 255.255.255.0
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/172.16.120.0 {
+    address 172.16.120.0
+    arp disabled
+    icmp-echo disabled
+    mask 255.255.255.0
+    traffic-group /Common/traffic-group-1
+}
+net interface 1.1 {
+    media-fixed 10000T-FD
+}
+net interface 1.2 {
+    media-fixed 10000T-FD
+}
+net interface 1.3 {
+    media-fixed 10000T-FD
+}
+net route /Common/default {
+    gw 172.16.100.1
+    network default
+}
+net route-domain /Common/0 {
+    id 0
+    vlans {
+        /Common/http-tunnel
+        /Common/socks-tunnel
+        /Common/vnic5
+        /Common/vnic4
+        /Common/vnic6
+    }
+}
+net self /Common/172.16.120.1 {
+    address 172.16.120.1/24
+    allow-service {
+        default
+    }
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic6
+}
+net self /Common/172.16.110.1 {
+    address 172.16.110.1/24
+    allow-service {
+        default
+    }
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic5
+}
+net self /Common/172.16.100.254 {
+    address 172.16.100.254/24
+    allow-service {
+        default
+    }
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic4
+}
+net self-allow {
+    defaults {
+        igmp:0
+        ospf:0
+        pim:0
+        tcp:161
+        tcp:22
+        tcp:4353
+        tcp:443
+        tcp:53
+        udp:1026
+        udp:161
+        udp:4353
+        udp:520
+        udp:53
+    }
+}
+net stp /Common/cist {
+    interfaces {
+        1.1 {
+            external-path-cost 200000
+            internal-path-cost 200000
+        }
+        1.2 {
+            external-path-cost 200000
+            internal-path-cost 200000
+        }
+        1.3 {
+            external-path-cost 200000
+            internal-path-cost 200000
+        }
+    }
+    vlans {
+        /Common/vnic4
+        /Common/vnic5
+        /Common/vnic6
+    }
+}
+net vlan /Common/vnic4 {
+    interfaces {
+        1.1 { }
+    }
+    sflow {
+        poll-interval-global no
+        sampling-rate-global no
+    }
+    tag 4094
+}
+net vlan /Common/vnic5 {
+    interfaces {
+        1.2 { }
+    }
+    sflow {
+        poll-interval-global no
+        sampling-rate-global no
+    }
+    tag 4093
+}
+net vlan /Common/vnic6 {
+    interfaces {
+        1.3 { }
+    }
+    sflow {
+        poll-interval-global no
+        sampling-rate-global no
+    }
+    tag 4092
+}
+net fdb tunnel /Common/http-tunnel { }
+net fdb tunnel /Common/socks-tunnel { }
+net fdb vlan /Common/vnic4 { }
+net fdb vlan /Common/vnic5 { }
+net fdb vlan /Common/vnic6 { }
+net ipsec ike-daemon /Common/ikedaemon {
+    log-level debug2
+    log-publisher /Common/default-ipsec-log-publisher
+}
+net ipsec ike-peer /Common/vz--test-peer-172-16-100-1 {
+    my-id-type address
+    peers-id-type address
+    phase1-auth-method pre-shared-key
+    preshared-key-encrypted $M$r2$69eX7PRlx/VHdYZwthlrLA==
+    remote-address 172.16.100.1
+    version { v1 }
+}
+net ipsec ipsec-policy /Common/vz-policy {
+    mode tunnel
+    tunnel-local-address 172.16.100.254
+    tunnel-remote-address 172.16.100.1
+}
+net ipsec traffic-selector /Common/ts-10-10 {
+    destination-address 172.16.10.0/24
+    ipsec-policy /Common/vz-policy
+    source-address 172.16.110.0/24
+}
+net ipsec traffic-selector /Common/ts-20-20 {
+    destination-address 172.16.20.0/24
+    ipsec-policy /Common/vz-policy
+    order 1
+    source-address 172.16.120.0/24
+}
+net tunnels tunnel /Common/http-tunnel {
+    description "Tunnel for http-explicit profile"
+    profile /Common/tcp-forward
+}
+net tunnels tunnel /Common/socks-tunnel {
+    description "Tunnel for socks profile"
+    profile /Common/tcp-forward
+}
+pem global-settings analytics { }
+security device-id attribute /Common/att01 {
+    id 1
+}
+security device-id attribute /Common/att02 {
+    id 2
+}
+security device-id attribute /Common/att03 {
+    id 3
+}
+security device-id attribute /Common/att04 {
+    id 4
+}
+security device-id attribute /Common/att05 {
+    id 5
+}
+security device-id attribute /Common/att06 {
+    id 6
+}
+security device-id attribute /Common/att07 {
+    id 7
+}
+security device-id attribute /Common/att08 {
+    id 8
+}
+security device-id attribute /Common/att09 {
+    id 9
+}
+security device-id attribute /Common/att10 {
+    id 10
+}
+security device-id attribute /Common/att11 {
+    id 11
+}
+security device-id attribute /Common/att12 {
+    id 12
+}
+security device-id attribute /Common/att13 {
+    id 13
+}
+security device-id attribute /Common/att14 {
+    id 14
+}
+security device-id attribute /Common/att15 {
+    id 15
+}
+security device-id attribute /Common/att16 {
+    id 16
+}
+security device-id attribute /Common/att17 {
+    id 17
+}
+security device-id attribute /Common/att18 {
+    id 18
+}
+security device-id attribute /Common/att19 {
+    id 19
+}
+security device-id attribute /Common/att20 {
+    id 20
+}
+security device-id attribute /Common/att21 {
+    id 21
+}
+security device-id attribute /Common/att22 {
+    id 22
+}
+security device-id attribute /Common/att23 {
+    id 23
+}
+security device-id attribute /Common/att24 {
+    id 24
+}
+security device-id attribute /Common/att25 {
+    id 25
+}
+security device-id attribute /Common/att26 {
+    id 26
+}
+security device-id attribute /Common/att27 {
+    id 27
+}
+security device-id attribute /Common/att28 {
+    id 28
+}
+security device-id attribute /Common/att29 {
+    id 29
+}
+security device-id attribute /Common/att30 {
+    id 30
+}
+security device-id attribute /Common/att31 {
+    id 31
+}
+security device-id attribute /Common/att32 {
+    id 32
+}
+security device-id attribute /Common/att33 {
+    id 33
+}
+security device-id attribute /Common/att34 {
+    id 34
+}
+security device-id attribute /Common/att35 {
+    id 35
+}
+security device-id attribute /Common/att36 {
+    id 36
+}
+security device-id attribute /Common/att37 {
+    id 37
+}
+security device-id attribute /Common/att38 {
+    id 38
+}
+security device-id attribute /Common/att39 {
+    id 39
+}
+security dos udp-portlist /Common/dos-udp-portlist {
+    list-type exclude-listed-ports
+}
+security firewall config-change-log {
+    log-publisher /Common/local-db-publisher
+}
+security firewall config-entity-id /Common/uuid_entity_id {
+    entity-id 7005822702119240321
+}
+security firewall port-list /Common/_sys_self_allow_tcp_defaults {
+    ports {
+        22 { }
+        53 { }
+        161 { }
+        443 { }
+        1029-1043 { }
+        4353 { }
+    }
+}
+security firewall port-list /Common/_sys_self_allow_udp_defaults {
+    ports {
+        53 { }
+        161 { }
+        520 { }
+        1026 { }
+        4353 { }
+    }
+}
+security firewall rule-list /Common/_sys_self_allow_all {
+    rules {
+        _sys_allow_all {
+            action accept
+        }
+    }
+}
+security firewall rule-list /Common/_sys_self_allow_defaults {
+    rules {
+        _sys_allow_tcp_defaults {
+            action accept
+            ip-protocol tcp
+            destination {
+                port-lists {
+                    /Common/_sys_self_allow_tcp_defaults
+                }
+            }
+        }
+        _sys_allow_udp_defaults {
+            action accept
+            ip-protocol udp
+            destination {
+                port-lists {
+                    /Common/_sys_self_allow_udp_defaults
+                }
+            }
+        }
+        _sys_allow_ospf_defaults {
+            action accept
+            ip-protocol ospf
+        }
+        _sys_allow_pim_defaults {
+            action accept
+            ip-protocol pim
+        }
+        _sys_allow_igmp_defaults {
+            action accept
+            ip-protocol igmp
+        }
+    }
+}
+security firewall rule-list /Common/_sys_self_allow_management {
+    rules {
+        _sys_allow_ssh {
+            action accept
+            ip-protocol tcp
+            destination {
+                ports {
+                    22 { }
+                }
+            }
+        }
+        _sys_allow_web {
+            action accept
+            ip-protocol tcp
+            destination {
+                ports {
+                    443 { }
+                }
+            }
+        }
+    }
+}
+security ip-intelligence policy /Common/ip-intelligence { }
+security scrubber profile /Common/scrubber-profile-default {
+    advertisement-ttl 300
+}
+sys db adm.block.enable {
+    value "1"
+}
+sys db apm.apd.connhwm {
+    value "512"
+}
+sys db apm.apd.connlwm {
+    value "472"
+}
+sys db apm.paap.version {
+    value "1.0"
+}
+sys db avr.stats.internal.maxentitiespertable {
+    value "20000"
+}
+sys db provision.extramb {
+    value "500"
+}
+sys db tmm.dhcp.client.connection.packets.inprogress.max {
+    value "2000"
+}
+sys db tmm.dhcp.server.connection.packets.inprogress.max {
+    value "2000"
+}
+sys dns {
+    name-servers { 8.8.8.8 }
+}
+sys feature-module cgnat {
+    disabled
+}
+sys folder / {
+    device-group none
+    hidden false
+    inherited-devicegroup false
+    inherited-traffic-group false
+    traffic-group /Common/traffic-group-1
+}
+sys folder /Common {
+    device-group none
+    hidden false
+    inherited-devicegroup true
+    inherited-traffic-group true
+    traffic-group /Common/traffic-group-1
+}
+sys folder /Common/Drafts {
+    device-group none
+    hidden false
+    inherited-devicegroup true
+    inherited-traffic-group true
+    traffic-group /Common/traffic-group-1
+}
+sys folder /Common/EPSEC {
+    device-group none
+    hidden false
+    inherited-devicegroup true
+    inherited-traffic-group true
+    traffic-group /Common/traffic-group-1
+}
+sys folder /Common/dos-common {
+    device-group none
+    hidden false
+    inherited-devicegroup false
+    inherited-traffic-group false
+    traffic-group /Common/traffic-group-local-only
+}
+sys global-settings {
+    gui-setup disabled
+    hostname ve4-ltm-13-1-3-5.com
+    mgmt-dhcp disabled
+}
+sys httpd {
+    auth-pam-idle-timeout 120000
+}
+sys management-dhcp /Common/sys-mgmt-dhcp-config {
+    request-options { subnet-mask broadcast-address routers domain-name domain-name-servers host-name ntp-servers interface-mtu }
+}
+sys management-ip 192.168.2.35/24 {
+    description configured-statically
+}
+sys management-ovsdb {
+    bfd-disabled
+    bfd-route-domain none
+    ca-cert-file none
+    cert-file none
+    cert-key-file none
+    disabled
+    flooding-type replicator
+    log-level info
+    logical-routing-type none
+    tunnel-maintenance-mode active
+}
+sys management-route /Common/default {
+    description configured-statically
+    gateway 192.168.2.1
+    network default
+}
+sys ntp {
+    servers { 0.north-america.pool.ntp.org 1.north-america.pool.ntp.org 2.north-america.pool.ntp.org 3.north-america.pool.ntp.org }
+}
+sys provision ltm {
+    level nominal
+}
+sys snmp {
+    agent-addresses { tcp6:161 udp6:161 }
+    communities {
+        /Common/comm-public {
+            community-name public
+            source default
+        }
+    }
+    disk-monitors {
+        /Common/root {
+            minspace 2000
+            path /
+        }
+        /Common/var {
+            minspace 10000
+            path /var
+        }
+    }
+    process-monitors {
+        /Common/bigd {
+            max-processes infinity
+            process bigd
+        }
+        /Common/chmand {
+            process chmand
+        }
+        /Common/httpd {
+            max-processes infinity
+            process httpd
+        }
+        /Common/mcpd {
+            process mcpd
+        }
+        /Common/sod {
+            process sod
+        }
+        /Common/tmm {
+            max-processes infinity
+            process tmm
+        }
+    }
+}
+sys diags ihealth {
+    expiration 30
+    options none
+    password none
+    user none
+}
+sys dynad key {
+    key $M$il$js/F56dr3H/SGY+qCxepiXsCFnAJDQqoRku7kPke+/cq3mZT7OQAcPQQg39Rr2Y/
+}
+sys dynad settings {
+    development-mode false
+}
+sys ecm cloud-provider /Common/aws-ec2 {
+    description "The aws-ec2 parameters"
+    property-template {
+        account { }
+        availability-zone {
+            valid-values { a b c d }
+        }
+        instance-type {
+            valid-values { t2.micro t2.small t2.medium m3.medium m3.large m3.xlarge m3.2xlarge c3.large c3.xlarge c3.2xlarge c3.4xlarge c3.8xlarge r3.large r3.xlarge r3.2xlarge r3.4xlarge r3.8xlarge }
+        }
+        region {
+            valid-values { us-east-1 us-west-1 us-west-2 sa-east-1 eu-west-1 eu-central-1 ap-southeast-2 ap-southeast-1 ap-northeast-1 }
+        }
+    }
+}
+sys ecm cloud-provider /Common/dnet {
+    description "The dnet parameters"
+}
+sys ecm cloud-provider /Common/vsphere {
+    description "The vsphere parameters"
+    property-template {
+        cloud-host-ip { }
+        dhcp-network-name { }
+        end-point-url { }
+        node-name { }
+    }
+}
+sys file ssl-key /Common/f5_api_com.key {
+    cache-path /config/filestore/files_d/Common_d/certificate_key_d/:Common:f5_api_com.key_59071_1
+    passphrase $M$Ly$RVGxwytofUDQ2YOOmDubnrmKXqW3qg2ZDK4c1ezKzyHbKJtjhLNmeylfXLxJaBbw1jG+ALz7JPrLEQGZSzneWRK2T7nTpsxRS0TyZUjDfr4=
+    revision 1
+    source-path file:///config/ssl/ssl.key/f5_api_com.key
+}
+sys fpga firmware-config {
+    type standard-balanced-fpga
+}
+sys sflow global-settings http { }
+sys sflow global-settings vlan { }
+sys software update {
+    auto-check enabled
+    auto-phonehome enabled
+    frequency weekly
+}
+wom endpoint-discovery { }
