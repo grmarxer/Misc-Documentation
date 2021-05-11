@@ -9,206 +9,83 @@ sys httpd {
 }
 
 
-net vlan vnic4 {
-    app-service none
-    auto-lasthop default
-    cmp-hash default
-    customer-tag none
-    dag-round-robin disabled
-    dag-tunnel outer
-    description none
-    failsafe disabled
-    failsafe-action failover-restart-tm
-    failsafe-timeout 90
-    fwd-mode l3
-    hardware-syncookie disabled
-    if-index 144
+net vlan /Common/vnic4 {
     interfaces {
-        1.1 {
-            app-service none
-            tag-mode none
-            untagged
-        }
+        1.1 { }
     }
-    learning enable-forward
-    mtu 1500
-    partition Common
     sflow {
-        poll-interval 0
         poll-interval-global no
-        sampling-rate 0
         sampling-rate-global no
     }
-    source-checking disabled
-    syn-flood-rate-limit 1000
-    syncache-threshold 6000
     tag 4094
 }
-net vlan vnic5 {
-    app-service none
-    auto-lasthop default
-    cmp-hash default
-    customer-tag none
-    dag-round-robin disabled
-    dag-tunnel outer
-    description none
-    failsafe disabled
-    failsafe-action failover-restart-tm
-    failsafe-timeout 90
-    fwd-mode l3
-    hardware-syncookie disabled
-    if-index 160
+net vlan /Common/vnic5 {
     interfaces {
-        1.2 {
-            app-service none
-            tag-mode none
-            untagged
-        }
+        1.2 { }
     }
-    learning enable-forward
-    mtu 1500
-    partition Common
     sflow {
-        poll-interval 0
         poll-interval-global no
-        sampling-rate 0
         sampling-rate-global no
     }
-    source-checking disabled
-    syn-flood-rate-limit 1000
-    syncache-threshold 6000
     tag 4093
 }
-net vlan vnic6 {
-    app-service none
-    auto-lasthop default
-    cmp-hash default
-    customer-tag none
-    dag-round-robin disabled
-    dag-tunnel outer
-    description none
-    failsafe disabled
-    failsafe-action failover-restart-tm
-    failsafe-timeout 90
-    fwd-mode l3
-    hardware-syncookie disabled
-    if-index 176
+net vlan /Common/vnic6 {
     interfaces {
-        1.3 {
-            app-service none
-            tag-mode none
-            untagged
-        }
+        1.3 { }
     }
-    learning enable-forward
-    mtu 1500
-    partition Common
     sflow {
-        poll-interval 0
         poll-interval-global no
-        sampling-rate 0
         sampling-rate-global no
     }
-    source-checking disabled
-    syn-flood-rate-limit 1000
-    syncache-threshold 6000
     tag 4092
 }
-net self Dummy_IPv6_SELF-IP_for_Route {
+net self /Common/Dummy_IPv6_SELF-IP_for_Route {
     address fc00:bbbb::/64
-    address-source from-user
     allow-service {
         default
     }
-    app-service none
-    description none
-    floating disabled
-    inherited-traffic-group false
-    partition Common
-    service-policy none
-    traffic-group traffic-group-local-only
-    unit 0
-    vlan vnic4
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic4
 }
-net self fd00:172:16:110::1 {
+net self /Common/fd00:172:16:110::1 {
     address fd00:172:16:110::1/64
-    address-source from-user
     allow-service {
         default
     }
-    app-service none
-    description none
-    floating disabled
-    inherited-traffic-group false
-    partition Common
-    service-policy none
-    traffic-group traffic-group-local-only
-    unit 0
-    vlan vnic5
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic5
 }
-net self 172.16.100.254 {
+net self /Common/172.16.100.254 {
     address 172.16.100.254/24
-    address-source from-user
     allow-service {
         default
     }
-    app-service none
-    description none
-    floating disabled
-    inherited-traffic-group false
-    partition Common
-    service-policy none
-    traffic-group traffic-group-local-only
-    unit 0
-    vlan vnic4
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic4
 }
-net self 172.16.110.1 {
+net self /Common/172.16.110.1 {
     address 172.16.110.1/24
-    address-source from-user
     allow-service {
         default
     }
-    app-service none
-    description none
-    floating disabled
-    inherited-traffic-group false
-    partition Common
-    service-policy none
-    traffic-group traffic-group-local-only
-    unit 0
-    vlan vnic5
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic5
 }
-net self 172.16.120.1 {
+net self /Common/172.16.120.1 {
     address 172.16.120.1/24
-    address-source from-user
     allow-service {
         default
     }
-    app-service none
-    description none
-    floating disabled
-    inherited-traffic-group false
-    partition Common
-    service-policy none
-    traffic-group traffic-group-local-only
-    unit 0
-    vlan vnic6
+    traffic-group /Common/traffic-group-local-only
+    vlan /Common/vnic6
 }
-net route default {
-    app-service none
-    description none
+net route /Common/default {
     gw 172.16.100.1
-    mtu 0
     network default
-    partition Common
 }
-net route default-inet6 {
-    app-service none
-    description none
+net route /Common/default-inet6 {
     interface /Common/vnic4
-    mtu 0
     network default-inet6
-    partition Common
 }
 
 
@@ -307,357 +184,67 @@ net ipsec traffic-selector ts-ipv6-110-to-10 {
 
 
 
-ltm virtual L3-172-16-10-0 {
-    address-status yes
-    app-service none
-    auth none
-    auto-lasthop default
-    bwc-policy none
-    clone-pools none
-    cmp-enabled yes
-    connection-limit 0
-    description none
-    destination 172.16.10.0:any
-    enabled
-    fallback-persistence none
-    flow-eviction-policy none
-    gtm-score 0
+ltm virtual /Common/L3-172-16-10-0 {
+    destination /Common/172.16.10.0:0
     ip-forward
-    ip-protocol any
-    last-hop-pool none
     mask 255.255.255.0
-    metadata none
-    mirror disabled
-    mobile-app-tunnel disabled
-    nat64 disabled
-    partition Common
-    per-flow-request-access-policy none
-    persist none
-    policies none
-    pool none
     profiles {
-        fastL4 {
-            context all
-        }
+        /Common/fastL4 { }
     }
-    rate-class none
-    rate-limit disabled
-    rate-limit-dst-mask 0
-    rate-limit-mode object
-    rate-limit-src-mask 0
-    related-rules none
-    rules none
-    security-log-profiles none
-    service-down-immediate-action none
-    service-policy none
     source 172.16.110.0/24
-    source-address-translation {
-        pool none
-        type none
-    }
-    source-port preserve
-    syn-cookie-status not-activated
-    traffic-classes none
     translate-address disabled
     translate-port disabled
-    transparent-nexthop none
-    urldb-feed-policy none
-    vlans none
-    vlans-disabled
-    vs-index 6
 }
-ltm virtual L3-172-16-110-0 {
-    address-status yes
-    app-service none
-    auth none
-    auto-lasthop default
-    bwc-policy none
-    clone-pools none
-    cmp-enabled yes
-    connection-limit 0
-    description none
-    destination 172.16.110.0:any
-    enabled
-    fallback-persistence none
-    flow-eviction-policy none
-    gtm-score 0
+ltm virtual /Common/L3-172-16-110-0 {
+    destination /Common/172.16.110.0:0
     ip-forward
-    ip-protocol any
-    last-hop-pool none
     mask 255.255.255.0
-    metadata none
-    mirror disabled
-    mobile-app-tunnel disabled
-    nat64 disabled
-    partition Common
-    per-flow-request-access-policy none
-    persist none
-    policies none
-    pool none
     profiles {
-        fastL4 {
-            context all
-        }
+        /Common/fastL4 { }
     }
-    rate-class none
-    rate-limit disabled
-    rate-limit-dst-mask 0
-    rate-limit-mode object
-    rate-limit-src-mask 0
-    related-rules none
-    rules none
-    security-log-profiles none
-    service-down-immediate-action none
-    service-policy none
     source 172.16.10.0/24
-    source-address-translation {
-        pool none
-        type none
-    }
-    source-port preserve
-    syn-cookie-status not-activated
-    traffic-classes none
     translate-address disabled
     translate-port disabled
-    transparent-nexthop none
-    urldb-feed-policy none
-    vlans none
-    vlans-disabled
-    vs-index 7
 }
-ltm virtual L3-172-16-20-0 {
-    address-status yes
-    app-service none
-    auth none
-    auto-lasthop default
-    bwc-policy none
-    clone-pools none
-    cmp-enabled yes
-    connection-limit 0
-    description none
-    destination 172.16.20.0:any
-    enabled
-    fallback-persistence none
-    flow-eviction-policy none
-    gtm-score 0
+ltm virtual /Common/L3-172-16-120 {
+    destination /Common/172.16.20.0:0
     ip-forward
-    ip-protocol any
-    last-hop-pool none
     mask 255.255.255.0
-    metadata none
-    mirror disabled
-    mobile-app-tunnel disabled
-    nat64 disabled
-    partition Common
-    per-flow-request-access-policy none
-    persist none
-    policies none
-    pool none
     profiles {
-        fastL4 {
-            context all
-        }
+        /Common/fastL4 { }
     }
-    rate-class none
-    rate-limit disabled
-    rate-limit-dst-mask 0
-    rate-limit-mode object
-    rate-limit-src-mask 0
-    related-rules none
-    rules none
-    security-log-profiles none
-    service-down-immediate-action none
-    service-policy none
     source 172.16.120.0/24
-    source-address-translation {
-        pool none
-        type none
-    }
-    source-port preserve
-    syn-cookie-status not-activated
-    traffic-classes none
     translate-address disabled
     translate-port disabled
-    transparent-nexthop none
-    urldb-feed-policy none
-    vlans none
-    vlans-disabled
-    vs-index 8
 }
-ltm virtual L3-172-16-120-0 {
-    address-status yes
-    app-service none
-    auth none
-    auto-lasthop default
-    bwc-policy none
-    clone-pools none
-    cmp-enabled yes
-    connection-limit 0
-    description none
-    destination 172.16.120.0:any
-    enabled
-    fallback-persistence none
-    flow-eviction-policy none
-    gtm-score 0
+ltm virtual /Common/L3-172-16-120-0 {
+    destination /Common/172.16.120.0:0
     ip-forward
-    ip-protocol any
-    last-hop-pool none
     mask 255.255.255.0
-    metadata none
-    mirror disabled
-    mobile-app-tunnel disabled
-    nat64 disabled
-    partition Common
-    per-flow-request-access-policy none
-    persist none
-    policies none
-    pool none
     profiles {
-        fastL4 {
-            context all
-        }
+        /Common/fastL4 { }
     }
-    rate-class none
-    rate-limit disabled
-    rate-limit-dst-mask 0
-    rate-limit-mode object
-    rate-limit-src-mask 0
-    related-rules none
-    rules none
-    security-log-profiles none
-    service-down-immediate-action none
-    service-policy none
     source 172.16.20.0/24
-    source-address-translation {
-        pool none
-        type none
-    }
-    source-port preserve
-    syn-cookie-status not-activated
-    traffic-classes none
     translate-address disabled
     translate-port disabled
-    transparent-nexthop none
-    urldb-feed-policy none
-    vlans none
-    vlans-disabled
-    vs-index 9
 }
-ltm virtual L3-fd00-172-16-10-0_ipv6 {
-    address-status yes
-    app-service none
-    auth none
-    auto-lasthop default
-    bwc-policy none
-    clone-pools none
-    cmp-enabled yes
-    connection-limit 0
-    description none
-    destination fd00:172:16:10::.any
-    enabled
-    fallback-persistence none
-    flow-eviction-policy none
-    gtm-score 0
+ltm virtual /Common/L3-fd00-172-16-10-0_ipv6 {
+    destination /Common/fd00:172:16:10::.0
     ip-forward
-    ip-protocol any
-    last-hop-pool none
     mask ffff:ffff:ffff:ffff::
-    metadata none
-    mirror disabled
-    mobile-app-tunnel disabled
-    nat64 disabled
-    partition Common
-    per-flow-request-access-policy none
-    persist none
-    policies none
-    pool none
     profiles {
-        fastL4 {
-            context all
-        }
+        /Common/fastL4 { }
     }
-    rate-class none
-    rate-limit disabled
-    rate-limit-dst-mask 0
-    rate-limit-mode object
-    rate-limit-src-mask 0
-    related-rules none
-    rules none
-    security-log-profiles none
-    service-down-immediate-action none
-    service-policy none
-    source ::/0
-    source-address-translation {
-        pool none
-        type none
-    }
-    source-port preserve
-    syn-cookie-status not-activated
-    traffic-classes none
     translate-address disabled
     translate-port disabled
-    transparent-nexthop none
-    urldb-feed-policy none
-    vlans none
-    vlans-disabled
-    vs-index 13
 }
-ltm virtual L3-fd00-172-16-110-0_ipv6 {
-    address-status yes
-    app-service none
-    auth none
-    auto-lasthop default
-    bwc-policy none
-    clone-pools none
-    cmp-enabled yes
-    connection-limit 0
-    description none
-    destination fd00:172:16:110::.any
-    enabled
-    fallback-persistence none
-    flow-eviction-policy none
-    gtm-score 0
+ltm virtual /Common/L3-fd00-172-16-110-0_ipv6 {
+    destination /Common/fd00:172:16:110::.0
     ip-forward
-    ip-protocol any
-    last-hop-pool none
     mask ffff:ffff:ffff:ffff::
-    metadata none
-    mirror disabled
-    mobile-app-tunnel disabled
-    nat64 disabled
-    partition Common
-    per-flow-request-access-policy none
-    persist none
-    policies none
-    pool none
     profiles {
-        fastL4 {
-            context all
-        }
+        /Common/fastL4 { }
     }
-    rate-class none
-    rate-limit disabled
-    rate-limit-dst-mask 0
-    rate-limit-mode object
-    rate-limit-src-mask 0
-    related-rules none
-    rules none
-    security-log-profiles none
-    service-down-immediate-action none
-    service-policy none
-    source ::/0
-    source-address-translation {
-        pool none
-        type none
-    }
-    source-port preserve
-    syn-cookie-status not-activated
-    traffic-classes none
     translate-address disabled
     translate-port disabled
-    transparent-nexthop none
-    urldb-feed-policy none
-    vlans none
-    vlans-disabled
-    vs-index 12
 }
