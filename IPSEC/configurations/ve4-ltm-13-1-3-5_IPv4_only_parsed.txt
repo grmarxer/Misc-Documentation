@@ -176,7 +176,7 @@ ltm virtual /Common/L3-172-16-110-0 {
     translate-address disabled
     translate-port disabled
 }
-ltm virtual /Common/L3-172-16-120 {
+ltm virtual /Common/L3-172-16-20-0 {
     destination /Common/172.16.20.0:0
     ip-forward
     mask 255.255.255.0
