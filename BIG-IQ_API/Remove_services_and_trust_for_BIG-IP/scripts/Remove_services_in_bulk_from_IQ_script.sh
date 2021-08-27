@@ -1,7 +1,7 @@
 #!/bin/bash
 ##########################################################################################
 ##                                                                                      ##
-## Script to use BIG-IQ API to remove services from discovered BIG-IP's in bulk --      ##
+## Script uses BIG-IQ API to remove services from discovered BIG-IP's in bulk --        ##
 ##                                                                                      ##
 ## The script executes one API call at a time -- reiterating through a list of          ##
 ## BIG-IP machine ID's that are populated into an array.  The script attempts each API  ##
