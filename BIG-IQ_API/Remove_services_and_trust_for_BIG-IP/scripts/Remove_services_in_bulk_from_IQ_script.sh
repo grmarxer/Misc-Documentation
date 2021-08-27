@@ -58,7 +58,8 @@ sleepTimer=7
 retryTimer=10
 
 
-## Creating the array with the BIG-IP Machine ID's for witch services will be removed on BIG-IQ.  Enter each machine ID on a new line
+## Creating the array with the BIG-IP Machine ID's for which the services will be removed on BIG-IQ.  Enter each machine ID on a new line
+## if you use this approach you mush comment out the readarray file approach below  
 #uuidArray=(
 #326d3709-fdf7-498f-8d00-b52c7bb192d9
 #3ac4ad82-add1-420f-b6e9-301722b6e7c4
