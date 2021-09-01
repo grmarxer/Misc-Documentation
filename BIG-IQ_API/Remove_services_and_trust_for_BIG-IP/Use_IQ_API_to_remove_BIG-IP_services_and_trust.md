@@ -88,15 +88,16 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
 
     If interested, I have written a script that will remove services for multiple BIG-IP's in bulk based on either a text file or by placing the UUID's directly in the array itself.  
 
-    - [Script can be found here](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/scripts/Remove_services_in_bulk_from_IQ_script.sh)
+    - [Script can be found here](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/scripts/Remove_services_in_bulk_from_IQ_script.sh)  
 
-    - [Example of text file to use with the script can be found here](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/scripts/machineId_file.txt) 
+    - [Example of text file to use with the script can be found here](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/scripts/machineId_file.txt)  
 
 
 
-        __Note:__ Be sure to substitute the credentials outlined above in the command below  
+    __Note:__ Be sure to substitute the credentials outlined above in the command below  
 
-        <br/>  
+<br/>  
+
 
         ```
         curl -k -u admin:adminPassword -X POST \
