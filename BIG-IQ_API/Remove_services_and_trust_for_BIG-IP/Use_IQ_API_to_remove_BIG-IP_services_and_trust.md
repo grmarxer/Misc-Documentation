@@ -93,10 +93,10 @@ __NOTE:__  In this procedure we will use basic-auth and not a token for authenti
         - [Example of text file to use with the script can be found here](https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/scripts/machineId_file.txt)  
 
 
+        <br/>  
+        <br/>  
 
         __Note:__ Be sure to substitute the credentials outlined above in the command below  
-
-<br/>  
 
 
         ```
