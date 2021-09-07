@@ -68,6 +68,8 @@ retryTimer=10
 
 ## Reading in a text file to create the uuidArray array with the BIG-IP Machine ID's to have the services removed from BIG-IQ 
 ## Important ## Make sure there are no empty lines in the text file.  One Machine ID per line only
+## Follow this link for an example of what the text file should look like:
+## https://github.com/grmarxer/Misc-Documentation/blob/master/BIG-IQ_API/Remove_services_and_trust_for_BIG-IP/scripts/machineId_file.txt
 readarray -t uuidArray < $pathToFile
 
 
