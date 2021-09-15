@@ -38,7 +38,7 @@
 username=admin                  # replace admin with your BIG-IQ username
 password=default                # replace default with your BIG-IQ password
 mgmtIP="[fd00:172:aa:bb::10]"   # Enter your BIG-IQ mgmt IP address, if using IPV6 be sure to include brackets inside the quotes.
-pathToFile="/var/tmp/machineId_file.txt"  # replace with path to the Machine ID text file you created
+pathToFile="/var/tmp/machineId_file.txt"  # replace with the full path to the Machine ID text file you created
 
 
 
