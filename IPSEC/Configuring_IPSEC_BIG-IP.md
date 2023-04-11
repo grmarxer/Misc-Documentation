@@ -106,5 +106,11 @@ ping6 fd00:172:16:110::10
 
 <br/>  
 
-[Good Reference - Configuring IPsec between a BIG-IP System and a Third-Party Device](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-tmos-tunnels-ipsec-13-0-0/10.html)  
+### Good Reference 
+
+[Configuring IPsec between a BIG-IP System and a Third-Party Device](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-tmos-tunnels-ipsec-13-0-0/10.html)  
+<br/>  
+
+[K35087734: Configuring an IPsec IKEv1 tunnel between the BIG-IP system and an AWS VPC peer](https://my.f5.com/manage/s/article/K35087734)  
+
 
