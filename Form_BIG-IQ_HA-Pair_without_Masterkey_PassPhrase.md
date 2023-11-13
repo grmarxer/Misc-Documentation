@@ -5,7 +5,7 @@ Although it is impossible to recover the original Master Key, there is a workaro
 
 <br/>  
 
-#### This procedure was tested and verified on BIG-IQ 7.1.0.2  
+#### This procedure was tested and verified on BIG-IQ 7.1.0.2 and BIG-IQ 8.3.0  
 
 <br/>  
 
