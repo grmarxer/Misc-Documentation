@@ -30,7 +30,8 @@ Although it is impossible to recover the original Master Key, there is a workaro
 
 3. Run the script and save the output (should be a string similar to 'K65MqLxnAa7pTWLTr/j+PhwPBetNfoHoQYUY0xu0PHc=').  
     ```
-    ./config/MKSO_decrypt.sh
+    cd /config
+    ./MKSO_decrypt.sh
     ```
 
 4. In the secondary unit console, run 'clear-rest-storage -l -d' in order to return the unit to factory default.  
